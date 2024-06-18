@@ -13,8 +13,10 @@
     />
   </head>
   <body>
-    <nav class="navbar navbar-expand-lg" 
-    :class="[`navbar-${theme}` , `bg-${theme}` , 'navbar' , 'navbar-expand-lg']">
+    <nav
+      class="navbar navbar-expand-lg"
+      :class="[`navbar-${theme}` , `bg-${theme}` , 'navbar' , 'navbar-expand-lg']"
+    >
       <a class="navbar-brand" href="#">Navbar</a>
       <button
         class="navbar-toggler"
@@ -45,29 +47,24 @@
           </li>
         </ul>
         <form class="d-flex">
-          <button
-            class="btn btn-primary"
-            @click.prevent="changeTheme()"
-          >
+          <button class="btn btn-primary" @click.prevent="changeTheme()">
             Toggle Nav Bar
           </button>
         </form>
       </div>
     </nav>
-    <div id="content" class="container">
-      <h1>{{pages[activePage].pageTitle}}</h1>
-      <p>{{pages[activePage].content}}</p>
-    </div>
+
+    <page-viewer :page="pages[activePage]"></page-viewer>
+
     <script>
-        <!--in computed property return value changes based upon the value of the user  -->
-      Vue.createApp({
-        
+      <!--in computed property return value changes based upon the value of the user  -->
+      let app = Vue.createApp({
         //create  vue instance
         data() {
           //supplies an options object that defines the data that our application is going to use
           return {
-            activePage:0,
-            theme:'light',
+            activePage: 0,
+            theme: "light",
             pages: [
               {
                 link: { text: "Home", url: "index.html" },
@@ -87,16 +84,26 @@
             ],
           };
         },
-        methods:{
-            changeTheme(){
-                let theme='light';
-                if(this.theme=='light'){
-                    theme='dark'
-                }
-                this.theme=theme;
+        methods: {
+          changeTheme() {
+            let theme = "light";
+            if (this.theme == "light") {
+              theme = "dark";
             }
-        }
-      }).mount("body"); //can have multiple vue instances
+            this.theme = theme;
+          },
+        },
+      });
+      app.component("page-viewer", {
+        props:['page'],//arguments of the components
+        template: `
+            <div id="content" class="container">
+                <h1>{{page.pageTitle}}</h1>
+                <p>{{{page.content}}}</p>
+            </div>
+        `,
+      });
+      app.mount("body"); //can have multiple vue instances
     </script>
   </body>
 </html>
