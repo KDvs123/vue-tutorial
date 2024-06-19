@@ -72,10 +72,26 @@
 
   <h2 v-for="(value,key, index) in myInfo" :key="value">{{index}} {{key}} {{value}} </h2>
 
-  <template v-for="name in names">
+  <template v-for="name in names" :key="name">
     <h2>{{name}}</h2>
     <hr/>
   </template>
+
+  <!--without keys, vue uses an algorithm that minimizes element movement
+  and tries to patch/resume elements ofthe same type in-place
+  typical value is id property of object dont use non -primitive values like objects or arrays-->
+
+  <!-- <h2 v-for="name in names" :key="name" v-if="name==='Bruce'">{{name}}</h2> -->
+
+  <!--u shouldnt mix v-if value with v-for because v-if executes first than v-for-->
+
+   <template v-for="name in names" :key="name" >
+      <h2 v-if= "name === 'Bruce'" >{{name}}</h2>
+   </template>
+
+  
+
+
 
 
 
