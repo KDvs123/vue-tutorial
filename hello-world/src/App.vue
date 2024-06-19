@@ -52,9 +52,31 @@
 
   </template>
 
-  <
+  
   <h2 v-show="showElement">Using v-show</h2><!--when show element is false it just hidden if you have an element that's gonna be toggleing this is the effective way-->
   <h2 v-if="showElement">Using v-if</h2><!--when show element is false it just not present at all-->
+
+  <!--list rendering using v-for directive-->
+
+  <h2 v-for="name in names" :key="name">{{name}}</h2>
+  <h2 v-for="(name , index) in names" :key="index">{{index}} {{name}}</h2>
+  <h2 v-for="(name , index) in fullNames" :key="index">{{name.first}} {{name.last}}</h2>
+  <div v-for="actor in actors" :key="actor.name">
+    <h2>{{actor.name}}</h2>
+    <h3 v-for="movie in actor.movies" :key="movie">{{movie}}</h3>
+
+
+  </div>
+
+  <!--object-->
+
+  <h2 v-for="(value,key, index) in myInfo" :key="value">{{index}} {{key}} {{value}} </h2>
+
+  <template v-for="name in names">
+    <h2>{{name}}</h2>
+    <hr/>
+  </template>
+
 
 
 
@@ -101,7 +123,25 @@ export default {
       },
       num:5,
       display:true,
-      showElement:true
+      showElement:true,
+      names:['Bruce','Mark','diana'],
+      fullNames:[
+        {first:'Bruce', last:'Wayne'},
+        {first:'Clark', last:'Kent'},
+        {first:'Princess', last:'Diana'},
+      ],
+      actors:[
+        {name:'Christian Bale' , movies: ['Batman', 'The Prestige']},
+        {name: 'Di Caprio' , movies: ['Titanic' , 'Inception']}
+      ],
+
+      myInfo:{
+        name:'Vihanga',
+        channel:'VSK',
+        course:'Vue 3'
+      }
+
+    
       
     };
   },
