@@ -42,6 +42,8 @@
   <h2 v-else-if="num>0">The number is positive</h2>
   <h2 v-else>Its not a number</h2>
 
+
+
   <!--actes as an invisible div-->
   <template v-if="display">
     <h2>Viswas</h2>
@@ -49,6 +51,11 @@
     <h2>Vue</h2>
 
   </template>
+
+  <
+  <h2 v-show="showElement">Using v-show</h2><!--when show element is false it just hidden if you have an element that's gonna be toggleing this is the effective way-->
+  <h2 v-if="showElement">Using v-if</h2><!--when show element is false it just not present at all-->
+
 
 
 
@@ -93,7 +100,8 @@ export default {
         border:'1px solid darkred'
       },
       num:5,
-      display:true
+      display:true,
+      showElement:true
       
     };
   },
