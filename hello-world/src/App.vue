@@ -70,12 +70,12 @@
 
   <!--object-->
 
-  <h2 v-for="(value,key, index) in myInfo" :key="value">{{index}} {{key}} {{value}} </h2>
+  <!-- <h2 v-for="(value,key, index) in myInfo" :key="value">{{index}} {{key}} {{value}} </h2>
 
   <template v-for="name in names" :key="name">
     <h2>{{name}}</h2>
     <hr/>
-  </template>
+  </template> -->
 
   <!--without keys, vue uses an algorithm that minimizes element movement
   and tries to patch/resume elements ofthe same type in-place
@@ -85,27 +85,38 @@
 
   <!--u shouldnt mix v-if value with v-for because v-if executes first than v-for-->
 
-   <template v-for="name in names" :key="name" >
+   <!-- <template v-for="name in names" :key="name" >
       <h2 v-if= "name === 'Bruce'" >{{name}}</h2>
-   </template>
+   </template> -->
 
-  
+   
+    <h2>addMethod {{add(2,3,4)}}</h2>
+    <h2>addMethod {{add(10,15,20)}}</h2>
+    <h2>Multiply method {{multiply(10)}}</h2>
+    <h2>{{name1}}</h2>
+    <div>
+         <button v-on:mouseover="name1='batman'">Change Name</button>
+    </div>
 
-
-
-
-
-
-
-  
+    <h2>{{count}}</h2>
+    <div>
+      <button v-on:click="increment(2)">Increment Button</button>
+      <button v-on:click="decrement(2)">Decrement Button</button>
+       <button v-on:click="increment(5)">Increment Button</button>
+      <button v-on:click="decrement(5)">Decrement Button</button>
+    </div>
+   
 </template>
 <!--recommended way is mustash way-->
 
 <script>
 export default {
   name: "App",
+  
   data() {
     return {
+      count:0,
+      name1:'Wishwas',
       greet: "Byee",
       name: "Vihanga",
       channel: "<b>Chanux Bro<b>",
@@ -155,12 +166,38 @@ export default {
         name:'Vihanga',
         channel:'VSK',
         course:'Vue 3'
-      }
+      },
+
+      baseMultiplier:5
 
     
       
     };
+
+   
   },
+   methods:{
+
+    add(a,b,c){
+      return a+b+c
+    },
+
+    multiply(num){
+      return num*this.baseMultiplier
+
+    }
+
+    ,increment(num){
+      this.count+=num;
+    }
+    , decrement(num){
+      this.count-=num
+    }
+
+
+
+      
+  }
 };
 </script>
 
