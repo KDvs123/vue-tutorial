@@ -1,16 +1,26 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <div>{{greet}} {{name}}</div> <!--binding data-->
+  <div v-text="channel"></div> <!--Directive-->
+  <!--  <div v-text="name">Hello</div> v textwill override element children-->
+
+  
+
 </template>
+<!--recommended way is mustash way-->
+
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
 
 export default {
   name: 'App',
-  components: {
-    HelloWorld
+  data(){
+    return{
+      greet:'Byee',
+      name:'Vihanga',
+      channel:'Chanux Bro'
+    }
   }
+  
 }
 </script>
 
