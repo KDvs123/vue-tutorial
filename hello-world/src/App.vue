@@ -95,12 +95,12 @@
     <h2>Multiply method {{multiply(10)}}</h2>
     <h2>{{name1}}</h2>
     <div>
-         <button v-on:mouseover="name1='batman'">Change Name</button>
+         <button @mouseover="changeName($event) , increment(1, $event)">Change Name</button>
     </div>
 
     <h2>{{count}}</h2>
     <div>
-      <button v-on:click="increment(2)">Increment Button</button>
+      <button @click="increment(2, $event)">Increment Button</button>
       <button v-on:click="decrement(2)">Decrement Button</button>
        <button v-on:click="increment(5)">Increment Button</button>
       <button v-on:click="decrement(5)">Decrement Button</button>
@@ -192,6 +192,10 @@ export default {
     }
     , decrement(num){
       this.count-=num
+    },
+    changeName(event){
+      this.name1='batman'
+      console.log(event)
     }
 
 
