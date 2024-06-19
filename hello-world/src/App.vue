@@ -35,6 +35,24 @@
   <h2 v-bind:style="headerStyleObject">Font Size</h2>
   <div v-bind:style="[baseStyleObject,succssStyleObject]">Sucess Style</div><!--styles written in the last style object overrides previous style object -->
   <div v-bind:style="[baseStyleObject,dangerStyleObjec]">Danger Style</div>
+  
+  <!--Conditional Rendering-->
+  <h2 v-if="num===0">The number is zero</h2>
+  <h2 v-else-if="num<0" >The number is negative</h2>
+  <h2 v-else-if="num>0">The number is positive</h2>
+  <h2 v-else>Its not a number</h2>
+
+  <!--actes as an invisible div-->
+  <template v-if="display">
+    <h2>Viswas</h2>
+    <h2>Chanux Bro</h2>
+    <h2>Vue</h2>
+
+  </template>
+
+
+
+  
 </template>
 <!--recommended way is mustash way-->
 
@@ -73,7 +91,9 @@ export default {
         color:'dark-red',
         backgroundColor:'red',
         border:'1px solid darkred'
-      }
+      },
+      num:5,
+      display:true
       
     };
   },
