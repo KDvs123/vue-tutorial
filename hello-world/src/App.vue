@@ -255,7 +255,16 @@
    it doesnt call
    -->
 
-   
+   <template v-for="item in items" :key="item.id">
+      <h2 v-if="item.price  >100">{{item.title}} {{item.price}}</h2>
+
+  </template>
+
+  <h2 v-for="item in expensiveitems" :key="item.id">
+    {{item.price}} {{item.title}}
+  </h2>
+
+
 
 
 
@@ -385,6 +394,9 @@ export default {
          console.log('get computed Property')
         return this.items.reduce((total,curr)=> (total+= curr.price),0)
        
+      },
+      expensiveitems(){
+        return this.items.filter(item => item.price>100)
       }
     // add(a,b,c){
     //   return a+b+c
