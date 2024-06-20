@@ -7,7 +7,8 @@
 <script>
 export default {
     name:'GreetVue',
-    props:['name', 'heroName']
+    props:['name', 'heroName'],
+    
 
 }
 </script>
