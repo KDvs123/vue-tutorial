@@ -44,7 +44,6 @@
   <h2 v-else>Its not a number</h2>
  -->
 
-
   <!--actes as an invisible div-->
   <!-- <template v-if="display">
     <h2>Viswas</h2>
@@ -53,7 +52,6 @@
 
   </template> -->
 
-  
   <!-- <h2 v-show="showElement">Using v-show</h2> -->
   <!--when show element is false it just hidden if you have an element that's gonna be toggleing this is the effective way-->
   <!-- <h2 v-if="showElement">Using v-if</h2> -->
@@ -88,12 +86,11 @@
 
   <!--u shouldnt mix v-if value with v-for because v-if executes first than v-for-->
 
-   <!-- <template v-for="name in names" :key="name" >
+  <!-- <template v-for="name in names" :key="name" >
       <h2 v-if= "name === 'Bruce'" >{{name}}</h2>
    </template> -->
 
-   
-    <!-- <h2>addMethod {{add(2,3,4)}}</h2>
+  <!-- <h2>addMethod {{add(2,3,4)}}</h2>
     <h2>addMethod {{add(10,15,20)}}</h2>
     <h2>Multiply method {{multiply(10)}}</h2>
     <h2>{{name1}}</h2>
@@ -101,7 +98,7 @@
          <button @mouseover="changeName($event) , increment(1, $event)">Change Name</button>
     </div> -->
 
-    <!-- <h2>{{count}}</h2>
+  <!-- <h2>{{count}}</h2>
     <div>
       <button @click="increment(2, $event)">Increment Button</button>
       <button v-on:click="decrement(2)">Decrement Button</button>
@@ -109,25 +106,29 @@
       <button v-on:click="decrement(5)">Decrement Button</button>
     </div> -->
 
+  <!--Form Handling-->
+  <div>
+    <pre>{{ JSON.stringify(formValues, null, 2) }}</pre>
+  </div>
 
-    <!--Form Handling-->
-    <div>
-      <pre>{{JSON.stringify(formValues,null ,2)}}</pre>
-    </div>
-
-    <form action="
-    ">
-
+  <form @submit.prevent="submitForm"
+    action="
+    "
+  >
     <div>
       <label for="name">Name:</label>
-      <input type="text" id="name" v-model="formValues.name">
+      <input type="text" id="name" v-model.trim.lazy="formValues.name" />
     </div>
 
     <div>
       <label for="profile">Profile Summary</label>
-        <textarea  id="profile" cols="30" rows="10" v-model="formValues.profileSummary"></textarea>
-
-      </div>
+      <textarea
+        id="profile"
+        cols="30"
+        rows="10"
+        v-model="formValues.profileSummary"
+      ></textarea>
+    </div>
     <div>
       <label for="country">Country</label>
       <select name="" id="country" v-model="formValues.country">
@@ -140,37 +141,113 @@
 
     <div>
       <label for="job-location">Job Location</label>
-      <select name="" id="job-location" multiple v-model="formValues.jobLocation">
+      <select
+        name=""
+        id="job-location"
+        multiple
+        v-model="formValues.jobLocation"
+      >
         <option value="india">India</option>
         <option value="vietnam">Vietnam</option>
         <option value="Srilanka">Srilanka</option>
       </select>
     </div>
 
+    <div>
+      <input
+        type="checkbox"
+        id="remoteWork"
+        v-model="formValues.remoteWork"
+        true-value="yes"
+        false-value="no"
+      />
+      <label for="remoteWork">Open to remote work</label>
+    </div>
+  
 
-    </form>
-      
-   
+    <div>
+      <label for="skill">Skill</label>
+      <input
+        type="checkbox"
+        id="html"
+        v-model="formValues.skillSet"
+        value="html"
+      />
+      <label for="html">HTML</label>
+      <input
+        type="checkbox"
+        id="css"
+        v-model="formValues.skillSet"
+        value="css"
+      />
+      <label for="css">CSS</label>
+      <input type="checkbox" id="js" v-model="formValues.skillSet" value="js" />
+      <label for="js">JS</label>
+    </div>
 
+    <div>
+      <label for="">Years of Experince</label>
+      <input
+        type="radio"
+        id="0-2"
+        value="0-2"
+        v-model="formValues.yearsOfExperince"
+      />
+      <label for="0-2">0-2</label>
+      <input
+        type="radio"
+        id="3-5"
+        value="3-5"
+        v-model="formValues.yearsOfExperince"
+      />
+      <label for="3-5">3-5</label>
+      <input
+        type="radio"
+        id="6-10"
+        value="6-10"
+        v-model="formValues.yearsOfExperince"
+        
+      />
+      <label for="6-10">6-10</label>
+    </div>
 
+      <div>
+      <label for="age">Age</label>
+      <input @keyup.enter" type="number" id="age" v-model.number="formValues.age">
+    </div>
 
+    <!-- <div>
+      <button>Submit</button>
+    </div> -->
+  </form>
 
-   
+  <!--v model can be only use for the select input and text area tags-->
 </template>
 <!--recommended way is mustash way-->
+
+<!--modifiers use for v-model and v-on -->
+<!--trim modifier removinf the leading and trailing white spaces-->
+<!-- number - displays numbers as int value rather than string value -->
+<!--lazy modifier - updates the model on change event instead of input event -->
+<!--prevent modifiers acts as e.preventDefault() -->
+<!---->
 
 <script>
 export default {
   name: "App",
-  
+
   data() {
     return {
-      formValues:{
-        name:'',
-        profileSummary:'',
-        country:'',
-        jobLocation:[]
-      }
+      formValues: {
+        name: "",
+        profileSummary: "",
+        country: "",
+        jobLocation: [],
+        remoteWork: "no",
+        skillSet: [],
+        yearsOfExperince: "",
+        age:null
+      },
       // count:0,
       // name1:'Wishwas',
       // greet: "Byee",
@@ -225,24 +302,20 @@ export default {
       // },
 
       // baseMultiplier:5
-
-    
-      
     };
-
-   
   },
-   methods:{
+  methods: {
+    submitForm(){
+      
+      console.log('Form values', this.formValues)
 
+    }
     // add(a,b,c){
     //   return a+b+c
     // },
-
     // multiply(num){
     //   return num*this.baseMultiplier
-
     // }
-
     // ,increment(num){
     //   this.count+=num;
     // }
@@ -253,16 +326,12 @@ export default {
     //   this.name1='batman'
     //   console.log(event)
     // }
-
-
-
-      
-  }
+  },
 };
 </script>
 
 <style>
-#app{
+#app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -284,7 +353,7 @@ input + label {
   display: inline-flex;
   margin-right: 20px;
 }
-input[type='text'],
+input[type="text"],
 textarea,
 select {
   display: block;
@@ -299,4 +368,3 @@ select {
   border-radius: 4px;
 }
 </style>
-
