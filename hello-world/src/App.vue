@@ -1,5 +1,5 @@
 <template>
-  <div>{{ greet }} {{ name }}</div>
+  <!-- <div>{{ greet }} {{ name }}</div> -->
   <!--binding data-->
 
   <!--  <div v-text="name">Hello</div> v textwill override element children-->
@@ -107,7 +107,7 @@
     </div> -->
 
   <!--Form Handling-->
-  <div>
+  <!-- <div>
     <pre>{{ JSON.stringify(formValues, null, 2) }}</pre>
   </div>
 
@@ -213,15 +213,24 @@
 
       <div>
       <label for="age">Age</label>
-      <input @keyup.enter" type="number" id="age" v-model.number="formValues.age">
-    </div>
+      <input @keyup.enter="submitForm()" type="number" id="age" v-model.number="formValues.age">
+    </div> -->
 
     <!-- <div>
       <button>Submit</button>
     </div> -->
-  </form>
+  <!-- </form> -->
 
+  <!-- v-once -->
+
+  <h2 v-once>{{name}}</h2>
+  <button @click="name='batman'">Change Name</button>
   <!--v model can be only use for the select input and text area tags-->
+ 
+
+  <!--v-pre skips compilation for the corresponding element-->
+
+   <h2 v-pre>{{name}}</h2>
 </template>
 <!--recommended way is mustash way-->
 
@@ -238,16 +247,17 @@ export default {
 
   data() {
     return {
-      formValues: {
-        name: "",
-        profileSummary: "",
-        country: "",
-        jobLocation: [],
-        remoteWork: "no",
-        skillSet: [],
-        yearsOfExperince: "",
-        age:null
-      },
+      name:'vihanga'
+      // formValues: {
+      //   name: "",
+      //   profileSummary: "",
+      //   country: "",
+      //   jobLocation: [],
+      //   remoteWork: "no",
+      //   skillSet: [],
+      //   yearsOfExperince: "",
+      //   age:null
+      // },
       // count:0,
       // name1:'Wishwas',
       // greet: "Byee",
