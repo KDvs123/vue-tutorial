@@ -239,9 +239,10 @@
    <!--properties that can be bound to the template like data properties-->
    <!--used for composing new data from the exsitng-->
 
-   <!-- <h2>Full Name- {{firstName}} {{lastName}}</h2>
+   <h2>Full Name- {{firstName}} {{lastName}}</h2>
    <h2>Computed Full Name - {{fullName}}</h2>
-   <button @click="items.push({id:4, title:'keyboard' ,price:50})">Add item</button> -->
+
+   <button @click="changeFullName()">Button Full Name</button>
    <!-- <h2>Computed Total- {{ total }}</h2>
 
    <h2>Method Total - {{getTotal()}}</h2>
@@ -255,14 +256,14 @@
    it doesnt call
    -->
 
-   <template v-for="item in items" :key="item.id">
+   <!-- <template v-for="item in items" :key="item.id">
       <h2 v-if="item.price  >100">{{item.title}} {{item.price}}</h2>
 
-  </template>
+  </template> -->
 
-  <h2 v-for="item in expensiveitems" :key="item.id">
+  <!-- <h2 v-for="item in expensiveitems" :key="item.id">
     {{item.price}} {{item.title}}
-  </h2>
+  </h2> -->
 
 
 
@@ -385,11 +386,20 @@ export default {
       console.log('get Total Method')
       return this.items.reduce((total,curr)=> (total+= curr.price),0)
 
+    },changeFullName(){
+      this.fullName='Clark Kent'
     }
     
     },computed:{
-      fullName(){
-        return `${this.firstName} ${this.lastName}`
+      fullName:{
+        get(){
+          return `${this.firstName} ${this.lastName}`
+        },
+        set(value){
+            const names= value.split(' ')
+            this.firstName= names[0]
+            this.lastName=names[1]
+        }
       },total(){
          console.log('get computed Property')
         return this.items.reduce((total,curr)=> (total+= curr.price),0)
