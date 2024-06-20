@@ -293,6 +293,12 @@
   <!--You have to call an api in response to change in application data-->
    <!--Apply transitions-->
 
+  <input type="text" v-model.lazy="movie">
+  <input type="text" v-model="movieInfo.title">
+  <input type="text" v-model="movieInfo.actor">
+
+  <button @click="movieList.push('Wonder Woman')">Add Movie</button>
+
 
 
 
@@ -325,6 +331,14 @@ export default {
   data() {
     return {
       volumn:0,
+      movie:'Batman',
+      movieInfo:{
+        title:'',
+        actor:''
+      },movieList:[
+        'batman',
+        'superman'
+      ],
       firstName:'Bruce',
       lastName:'Wayne',
       items:[
@@ -466,6 +480,21 @@ export default {
         alert('Listening to a high volumn may damage your ear')
       }
 
+    },movie:{
+      handler(newValue){
+      console.log(`Calling API with movie name = ${newValue}`)
+    }, immediate :true, // runs the watcher handler on page load
+    },
+    movieInfo:{
+      handler(newValue){
+      console.log(`Calling API with movie name = ${newValue.title} and actor ${newValue.actor}`)
+    },  deep:true // runs the watcher handler on page load
+    },
+    movieList:{
+      handler(newValue){
+      console.log(`uploaded values ${newValue}`)
+    },  deep:true // runs the watcher handler on page load
+    //use deep property to watch arrau and objects
     }
   }
 };
