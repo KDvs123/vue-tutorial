@@ -239,10 +239,26 @@
    <!--properties that can be bound to the template like data properties-->
    <!--used for composing new data from the exsitng-->
 
-   <h2>Full Name- {{firstName}} {{lastName}}</h2>
+   <!-- <h2>Full Name- {{firstName}} {{lastName}}</h2>
    <h2>Computed Full Name - {{fullName}}</h2>
-   <button @click="items.push({id:4, title:'keyboard' ,price:50})">Add item</button>
-   <h2>Total- {{ total }}</h2>
+   <button @click="items.push({id:4, title:'keyboard' ,price:50})">Add item</button> -->
+   <!-- <h2>Computed Total- {{ total }}</h2>
+
+   <h2>Method Total - {{getTotal()}}</h2>
+
+   <input type="text" v-model="country"> -->
+
+   <!--when i enter something on the input getTotal method calculates similar times but computed property 
+   doesnt calculate (execute)
+   
+   if there is a change in the program which is independent to the computed property
+   it doesnt call
+   -->
+
+   
+
+
+
 
 
 
@@ -281,6 +297,7 @@ export default {
           price:300
         }
       ],
+      country:''
       // name:'vihanga'
       // formValues: {
       //   name: "",
@@ -351,15 +368,23 @@ export default {
   methods: {
     submitForm(){
       
+      
       console.log('Form values', this.formValues)
 
     },
+    getTotal(){
+      console.log('get Total Method')
+      return this.items.reduce((total,curr)=> (total+= curr.price),0)
+
+    }
     
     },computed:{
       fullName(){
         return `${this.firstName} ${this.lastName}`
       },total(){
+         console.log('get computed Property')
         return this.items.reduce((total,curr)=> (total+= curr.price),0)
+       
       }
     // add(a,b,c){
     //   return a+b+c
