@@ -266,6 +266,37 @@
   </h2> -->
 
 
+  <!--Watches-->
+
+  <!--Allow you to watch any data or computed property and execute
+  some code in response to changes in the value -->
+
+  <!--implement a volume tracker-->
+
+
+  <!-- <h2>Volumn Tracker (0-20)</h2>
+  <h3>Current Volumn - {{volumn}}</h3>
+  <div>
+    <button @click="volumn+=2">Increment</button>
+    <button @click="volumn-=2">Decrement</button>
+
+  </div> -->
+
+
+  <!--Use computed properties when you need to compose new data from existing data sources-->
+
+  <!--need to reduce the length of a variable-->
+
+  <!--Use watches to check if a property has changed to a favouble value to know
+  if you're ready to perform an action-->
+
+  <!--You have to call an api in response to change in application data-->
+   <!--Apply transitions-->
+
+
+
+
+
 
 
 
@@ -284,12 +315,16 @@
 <!--prevent modifiers acts as e.preventDefault() -->
 <!---->
 
+
+
+
 <script>
 export default {
   name: "App",
 
   data() {
     return {
+      volumn:0,
       firstName:'Bruce',
       lastName:'Wayne',
       items:[
@@ -425,6 +460,14 @@ export default {
     //   console.log(event)
     // }
   },
+  watch:{
+    volumn(newValue , oldValue){ // create the method name with the same name as the data property
+      if(newValue>oldValue && newValue===16){
+        alert('Listening to a high volumn may damage your ear')
+      }
+
+    }
+  }
 };
 </script>
 
