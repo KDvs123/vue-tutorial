@@ -224,13 +224,30 @@
   <!-- v-once -->
 
   <h2 v-once>{{name}}</h2>
-  <button @click="name='batman'">Change Name</button>
+  <!-- <button @click="name='batman'">Change Name</button> -->
+
+
   <!--v model can be only use for the select input and text area tags-->
  
 
   <!--v-pre skips compilation for the corresponding element-->
 
-   <h2 v-pre>{{name}}</h2>
+   <!-- <h2 v-pre>{{name}}</h2> -->
+
+   <!-- Computed Properties-->
+
+   <!--properties that can be bound to the template like data properties-->
+   <!--used for composing new data from the exsitng-->
+
+   <h2>Full Name- {{firstName}} {{lastName}}</h2>
+   <h2>Computed Full Name - {{fullName}}</h2>
+   <button @click="items.push({id:4, title:'keyboard' ,price:50})">Add item</button>
+   <h2>Total- {{ total }}</h2>
+
+
+
+
+
 </template>
 <!--recommended way is mustash way-->
 
@@ -247,7 +264,24 @@ export default {
 
   data() {
     return {
-      name:'vihanga'
+      firstName:'Bruce',
+      lastName:'Wayne',
+      items:[
+        {
+          id:1,
+          title:'TV',
+          price:100
+        },{
+          id:2,
+          title:'Phone',
+          price:200	
+        },{
+          id:3,
+          title:'Laptop',
+          price:300
+        }
+      ],
+      // name:'vihanga'
       // formValues: {
       //   name: "",
       //   profileSummary: "",
@@ -319,7 +353,14 @@ export default {
       
       console.log('Form values', this.formValues)
 
-    }
+    },
+    
+    },computed:{
+      fullName(){
+        return `${this.firstName} ${this.lastName}`
+      },total(){
+        return this.items.reduce((total,curr)=> (total+= curr.price),0)
+      }
     // add(a,b,c){
     //   return a+b+c
     // },
