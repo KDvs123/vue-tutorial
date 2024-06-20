@@ -1,5 +1,13 @@
 <template>
-  <Greet/>
+  <Greet name="Bruce" heroName="Batman"/>
+  <Greet name="Clark" heroName="Superman" />
+  <Greet name="Diana" heroName="Wonder Woman"/>
+
+   <Greet :name="name" :heroName="channel"/>
+  
+
+  <!--Props are custom attributes for a component-->
+
 </template>
 
 <script>
@@ -13,6 +21,13 @@ export default {
     Greet,
     
     
+  },
+  data(){
+    return{
+      name: 'Vihanga',
+      channel: 'Chanux Bro'
+
+    }
   }
 }
 </script>
