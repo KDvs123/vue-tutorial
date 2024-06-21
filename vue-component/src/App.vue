@@ -17,6 +17,24 @@
     <CardVue >Card Content</CardVue>
     <CardVue ><h2>Card Content</h2></CardVue>
     <CardVue ><img src="https://picsum.photos/200" alt=""></CardVue>
+    <CardVue>
+      <template v-slot:header>
+        <h3>Header</h3>
+
+      </template>
+      <template v-slot:default>
+       <img src="https://picsum.photos/200" alt="">
+
+      </template>
+
+       <template v-slot:footer>
+        <h3>Footer</h3>
+
+      </template>
+    </CardVue>
+
+    
+
 
   
 

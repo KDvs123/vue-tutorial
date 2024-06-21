@@ -1,9 +1,21 @@
 <template>
     <div class="card">
-        <slot></slot>
+        <div class="card-header">
+            <slot name="header"></slot>
+        </div>
+        <div class="card-content">
+            <slot></slot>
+        </div>
+        <div class="card-footer">
+            <slot name="footer"></slot>
+        </div>
+        
 
     </div>
 </template>
+
+<!--we need to specify the name for the slot otherwise
+it wont know which slot is what-->
 
 <script>
     export default {
