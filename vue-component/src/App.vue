@@ -14,7 +14,9 @@
     <!-- <button @click="showPopup=true">Show Popup</button>
     <PopupVue v-show="showPopup" @close="closePopup"/> -->
     <!-- <h1>App Component Username{{name}}</h1> -->
-    <InputVue v-model="name"/>
+    <CardVue >Card Content</CardVue>
+    <CardVue ><h2>Card Content</h2></CardVue>
+    <CardVue ><img src="https://picsum.photos/200" alt=""></CardVue>
 
   
 
@@ -25,10 +27,19 @@
 
   <!--added a custom close event-->
 
+
+  <!--In Props child will always be in control of the HTML content and the parent can only pass in different data values-->
+  <!--Slots allow you to re-use a component-->
+  <!--They allow the parent componentto control the content inside the child content-->
+  <!-- Slot allow a parent component to embed any content in a child component including
+  HTML elements-->
+
 </template>
 
 <script>
-import InputVue from './components/input.vue'
+import CardVue from './components/Card.vue'
+// import InputVue from './components/input.vue'
+
 
 // import ArticleVue from './components/Article.vue'
 // import ComponentCVue from './components/ComponentC.vue'
@@ -47,7 +58,8 @@ export default {
     // ArticleVue,
     // ComponentCVue,
     // PopupVue
-    InputVue
+    // InputVue
+    CardVue
     
     
   },
