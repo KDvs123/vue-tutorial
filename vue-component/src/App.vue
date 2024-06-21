@@ -4,13 +4,15 @@
   <Greet name="Diana" heroName="Wonder Woman"/>
 
    <Greet :name="name" :heroName="channel"/> -->
-   <ArticleVue  id="my-article" title="Article Title"  :likes="50" :isPublished="true"/>
-   
+   <!-- <ArticleVue  id="my-article" title="Article Title"  :likes="50" :isPublished="true"/>
+    -->
 
    <!--no prop attribute automatically added to the root element-->
     <!--to apply to a specitdic attribute u use v-bind=${attri}-->
 
-    <ComponentCVue/>
+    <!-- <ComponentCVue/> -->
+    <button @click="showPopup=true">Show Popup</button>
+    <PopupVue v-show="showPopup" @close="closePopup"/>
     <h1>App Component Username{{name}}</h1>
   
 
@@ -19,11 +21,15 @@
   through each level
   -->
 
+  <!--added a custom close event-->
+
 </template>
 
 <script>
-import ArticleVue from './components/Article.vue'
-import ComponentCVue from './components/ComponentC.vue'
+// import ArticleVue from './components/Article.vue'
+// import ComponentCVue from './components/ComponentC.vue'
+import PopupVue from './components/Popup.vue'
+
 // import Greet from './components/Greet.vue'
 
 
@@ -34,18 +40,28 @@ export default {
   name: 'App',
   components: {
     // Greet,
-    ArticleVue,
-    ComponentCVue
+    // ArticleVue,
+    // ComponentCVue,
+    PopupVue
     
     
   },
   data(){
     return{
       name: 'Vihanga',
-      channel: 'Chanux Bro'
+      channel: 'Chanux Bro',
+      showPopup:false
 
     }
   }, 
+  methods:{
+    closePopup(name){
+      this.showPopup=false
+      console.log('Name',name)
+
+
+    }
+  },
   provide(){
     return{
        username:this.name,
