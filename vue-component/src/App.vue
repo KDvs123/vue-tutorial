@@ -4,7 +4,10 @@
   <Greet name="Diana" heroName="Wonder Woman"/>
 
    <Greet :name="name" :heroName="channel"/> -->
-   <ArticleVue title="Article Title"  :likes="50" :isPublished="true"/>
+   <ArticleVue  id="my-article" title="Article Title"  :likes="50" :isPublished="true"/>
+
+   <!--no prop attribute automatically added to the root element-->
+    <!--to apply to a specitdic attribute u use v-bind=${attri}
   
 
   <!--Props are custom attributes for a component-->
