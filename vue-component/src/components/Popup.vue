@@ -1,7 +1,8 @@
 <template>
     <div>
         <h2>This is a popup</h2>
-        <button @click="$emit('close','Vishwas')">Close Popup</button>
+        <input type="text" v-model="name">
+        <button @click="$emit('close',name)">Close Popup</button>
        
     </div>
 </template>
@@ -10,7 +11,21 @@
 <script>
     export default {
         name: "PopupVue",
-        emits:['close']
+        emits:{
+            close:(name)=>{
+                if(!name){
+                    return false
+                }else{
+                    return true
+                }
+
+            }
+        },
+        data(){
+            return{
+                name:''
+            }
+        }
         //array of events that a component can be emit to its parent component
 
     }
