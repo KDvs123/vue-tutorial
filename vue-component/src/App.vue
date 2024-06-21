@@ -11,9 +11,11 @@
     <!--to apply to a specitdic attribute u use v-bind=${attri}-->
 
     <!-- <ComponentCVue/> -->
-    <button @click="showPopup=true">Show Popup</button>
-    <PopupVue v-show="showPopup" @close="closePopup"/>
-    <h1>App Component Username{{name}}</h1>
+    <!-- <button @click="showPopup=true">Show Popup</button>
+    <PopupVue v-show="showPopup" @close="closePopup"/> -->
+    <!-- <h1>App Component Username{{name}}</h1> -->
+    <InputVue v-model="name"/>
+
   
 
   <!-- Props are custom attributes for a component-->
@@ -26,9 +28,11 @@
 </template>
 
 <script>
+import InputVue from './components/input.vue'
+
 // import ArticleVue from './components/Article.vue'
 // import ComponentCVue from './components/ComponentC.vue'
-import PopupVue from './components/Popup.vue'
+// import PopupVue from './components/Popup.vue'
 
 // import Greet from './components/Greet.vue'
 
@@ -42,25 +46,27 @@ export default {
     // Greet,
     // ArticleVue,
     // ComponentCVue,
-    PopupVue
+    // PopupVue
+    InputVue
     
     
   },
   data(){
     return{
-      name: 'Vihanga',
-      channel: 'Chanux Bro',
-      showPopup:false
+      name:''
+      // name: 'Vihanga',
+      // channel: 'Chanux Bro',
+      // showPopup:false
 
     }
   }, 
   methods:{
-    closePopup(name){
-      this.showPopup=false
-      console.log('Name',name)
+    // closePopup(name){
+    //   this.showPopup=false
+    //   console.log('Name',name)
 
 
-    }
+    // }
   },
   provide(){
     return{
