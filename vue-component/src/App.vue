@@ -32,7 +32,7 @@
 
       </template>
     </CardVue> -->
-    <NameListVue>
+    <!-- <NameListVue>
       <template v-slot:default="slotProps">
         {{slotProps.firstName}} {{slotProps.lastName}}
 
@@ -55,7 +55,16 @@
 
       </template>
 
-    </NameListVue>
+    </NameListVue> -->
+
+    <h4>App Component Text</h4>
+
+
+    <ChildStylesVue >
+      <h4>Childstyles component text</h4>
+    </ChildStylesVue>
+    <!--When using slots the parent components styles are applied and not the child component styles even though the
+    content is embedded inside the child component-->
 
     
 
@@ -79,7 +88,8 @@
 </template>
 
 <script>
-import NameListVue from './components/NameList.vue'
+import ChildStylesVue from './components/ChildStyles.vue'
+// import NameListVue from './components/NameList.vue'
 // import CardVue from './components/Card.vue'
 
 // import InputVue from './components/input.vue'
@@ -94,6 +104,7 @@ import NameListVue from './components/NameList.vue'
 
 
 
+
 export default {
   
   name: 'App',
@@ -104,7 +115,9 @@ export default {
     // PopupVue
     // InputVue
     // CardVue
-    NameListVue
+    // NameListVue
+    ChildStylesVue
+
     
     
   },
@@ -136,7 +149,7 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -144,5 +157,10 @@ export default {
   text-align: center;
   color: #2c3e50;
   margin-top: 60px;
+}
+
+h4{
+  color: orange;
+
 }
 </style>
