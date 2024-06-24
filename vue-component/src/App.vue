@@ -14,10 +14,10 @@
     <!-- <button @click="showPopup=true">Show Popup</button>
     <PopupVue v-show="showPopup" @close="closePopup"/> -->
     <!-- <h1>App Component Username{{name}}</h1> -->
-    <CardVue >Card Content</CardVue>
+    <!-- <CardVue >Card Content</CardVue>
     <CardVue ><h2>Card Content</h2></CardVue>
-    <CardVue ><img src="https://picsum.photos/200" alt=""></CardVue>
-    <CardVue>
+    <CardVue ><img src="https://picsum.photos/200" alt=""></CardVue> -->
+    <!-- <CardVue>
       <template v-slot:header>
         <h3>Header</h3>
 
@@ -31,7 +31,31 @@
         <h3>Footer</h3>
 
       </template>
-    </CardVue>
+    </CardVue> -->
+    <NameListVue>
+      <template v-slot:default="slotProps">
+        {{slotProps.firstName}} {{slotProps.lastName}}
+
+      </template>
+
+    </NameListVue>
+
+    <NameListVue>
+      <template v-slot:default="slotProps">
+        {{slotProps.lastName}} {{slotProps.firstName}}
+
+      </template>
+
+    </NameListVue>
+
+    
+    <NameListVue>
+      <template v-slot:default="slotProps">
+        {{slotProps.lastName}}
+
+      </template>
+
+    </NameListVue>
 
     
 
@@ -55,7 +79,9 @@
 </template>
 
 <script>
-import CardVue from './components/Card.vue'
+import NameListVue from './components/NameList.vue'
+// import CardVue from './components/Card.vue'
+
 // import InputVue from './components/input.vue'
 
 
@@ -77,7 +103,8 @@ export default {
     // ComponentCVue,
     // PopupVue
     // InputVue
-    CardVue
+    // CardVue
+    NameListVue
     
     
   },

@@ -239,10 +239,10 @@
    <!--properties that can be bound to the template like data properties-->
    <!--used for composing new data from the exsitng-->
 
-   <h2>Full Name- {{firstName}} {{lastName}}</h2>
+   <!-- <h2>Full Name- {{firstName}} {{lastName}}</h2>
    <h2>Computed Full Name - {{fullName}}</h2>
 
-   <button @click="changeFullName()">Button Full Name</button>
+   <button @click="changeFullName()">Button Full Name</button> -->
    <!-- <h2>Computed Total- {{ total }}</h2>
 
    <h2>Method Total - {{getTotal()}}</h2>
@@ -293,9 +293,9 @@
   <!--You have to call an api in response to change in application data-->
    <!--Apply transitions-->
 
-  <input type="text" v-model.lazy="movie">
+  <!-- <input type="text" v-model.lazy="movie">
   <input type="text" v-model="movieInfo.title">
-  <input type="text" v-model="movieInfo.actor">
+  <input type="text" v-model="movieInfo.actor"> -->
 
   <button @click="movieList.push('Wonder Woman')">Add Movie</button>
 
