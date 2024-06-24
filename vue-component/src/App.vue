@@ -91,8 +91,11 @@
   <!--prevent re rendering purposes-->
   <teleport to="#portal-root">
   <PortalVue />
-    </teleport><!--This takes a specific html div not a standard div-->
+    </teleport>
+    <!--This takes a specific html div not a standard div-->
     <!--having to deal with parent component css where child component is a model, a pop-up or a tooltip-->
+
+
 </template>
 
 <script>
