@@ -4,20 +4,20 @@
   <Greet name="Diana" heroName="Wonder Woman"/>
 
    <Greet :name="name" :heroName="channel"/> -->
-   <!-- <ArticleVue  id="my-article" title="Article Title"  :likes="50" :isPublished="true"/>
+  <!-- <ArticleVue  id="my-article" title="Article Title"  :likes="50" :isPublished="true"/>
     -->
 
-   <!--no prop attribute automatically added to the root element-->
-    <!--to apply to a specitdic attribute u use v-bind=${attri}-->
+  <!--no prop attribute automatically added to the root element-->
+  <!--to apply to a specitdic attribute u use v-bind=${attri}-->
 
-    <!-- <ComponentCVue/> -->
-    <!-- <button @click="showPopup=true">Show Popup</button>
+  <!-- <ComponentCVue/> -->
+  <!-- <button @click="showPopup=true">Show Popup</button>
     <PopupVue v-show="showPopup" @close="closePopup"/> -->
-    <!-- <h1>App Component Username{{name}}</h1> -->
-    <!-- <CardVue >Card Content</CardVue>
+  <!-- <h1>App Component Username{{name}}</h1> -->
+  <!-- <CardVue >Card Content</CardVue>
     <CardVue ><h2>Card Content</h2></CardVue>
     <CardVue ><img src="https://picsum.photos/200" alt=""></CardVue> -->
-    <!-- <CardVue>
+  <!-- <CardVue>
       <template v-slot:header>
         <h3>Header</h3>
 
@@ -32,7 +32,7 @@
 
       </template>
     </CardVue> -->
-    <!-- <NameListVue>
+  <!-- <NameListVue>
       <template v-slot:default="slotProps">
         {{slotProps.firstName}} {{slotProps.lastName}}
 
@@ -57,19 +57,15 @@
 
     </NameListVue> -->
 
-    <h4>App Component Text</h4>
+  <!-- <h4>App Component Text</h4> -->
 
+  <!-- 
 
     <ChildStylesVue >
       <h4>Childstyles component text</h4>
-    </ChildStylesVue>
-    <!--When using slots the parent components styles are applied and not the child component styles even though the
+    </ChildStylesVue> -->
+  <!--When using slots the parent components styles are applied and not the child component styles even though the
     content is embedded inside the child component-->
-
-    
-
-
-  
 
   <!-- Props are custom attributes for a component-->
   <!--Provide passes data through the component tree without having to pass the props
@@ -78,22 +74,37 @@
 
   <!--added a custom close event-->
 
-
   <!--In Props child will always be in control of the HTML content and the parent can only pass in different data values-->
   <!--Slots allow you to re-use a component-->
   <!--They allow the parent componentto control the content inside the child content-->
   <!-- Slot allow a parent component to embed any content in a child component including
   HTML elements-->
 
+  <!-- <button @click="activeTab = 'TabA'">Tab A</button>
+  <button @click="activeTab = 'TabB'">Tab B</button>
+  <button @click="activeTab = 'TabC'">Tab C</button>
+
+  <keep-alive>
+    <component :is="activeTab"></component>
+  </keep-alive>  -->
+
+  <!--prevent re rendering purposes-->
+  <teleport to="#portal-root">
+  <PortalVue />
+    </teleport><!--This takes a specific html div not a standard div-->
+    <!--having to deal with parent component css where child component is a model, a pop-up or a tooltip-->
 </template>
 
 <script>
-import ChildStylesVue from './components/ChildStyles.vue'
+import PortalVue from './components/Portal.vue';
+// import TabAVue from "./components/TabA.vue";
+// import TabBVue from "./components/TabB.vue";
+// import TabCVue from "./components/TabC.vue";
+// import ChildStylesVue from './components/ChildStyles.vue'
 // import NameListVue from './components/NameList.vue'
 // import CardVue from './components/Card.vue'
 
 // import InputVue from './components/input.vue'
-
 
 // import ArticleVue from './components/Article.vue'
 // import ComponentCVue from './components/ComponentC.vue'
@@ -101,13 +112,8 @@ import ChildStylesVue from './components/ChildStyles.vue'
 
 // import Greet from './components/Greet.vue'
 
-
-
-
-
 export default {
-  
-  name: 'App',
+  name: "App",
   components: {
     // Greet,
     // ArticleVue,
@@ -116,40 +122,38 @@ export default {
     // InputVue
     // CardVue
     // NameListVue
-    ChildStylesVue
-
-    
-    
+    // ChildStylesVue
+    // TabAVue,
+    // TabBVue,
+    // TabCVue,
+    PortalVue 
   },
-  data(){
-    return{
-      name:''
+  data() {
+    return {
+      name: "",
+      activeTab: "TabA",
       // name: 'Vihanga',
       // channel: 'Chanux Bro',
       // showPopup:false
-
-    }
-  }, 
-  methods:{
+    };
+  },
+  methods: {
     // closePopup(name){
     //   this.showPopup=false
     //   console.log('Name',name)
-
-
     // }
   },
-  provide(){
-    return{
-       username:this.name,
-    }
+  provide() {
+    return {
+      username: this.name,
+    };
     // this inject only to the bottom child element
     //inject doesnt allow u to bind the attributes
-
-  }
-}
+  },
+};
 </script>
 
-<style scoped>
+<style >
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -159,8 +163,7 @@ export default {
   margin-top: 60px;
 }
 
-h4{
+h4 {
   color: orange;
-
 }
 </style>
