@@ -1,6 +1,6 @@
 <template>
 <!-- <CreatePostVue/>
-<PostListVue/>
+
 
    -->
 <!--A component can go through 4 phases
@@ -18,7 +18,7 @@ unmounting
 <!--beforeUnmount(), unmounted()(best place to clean up resources) unmounting-->
 <!--activated() , deactivated() -->
 
-<ParentVue/>
+<!-- <ParentVue/> -->
 
 <!--parent cannot mount itself to the dom without knowing what a child component is-->
 <!--console.log result
@@ -33,15 +33,24 @@ parent Mounted()
 
 -->
 
+<!-- <PostListVue/> -->
+<!-- <TemplateRefVue/> -->
+<ClickCounterVue />
+<HoverCounterVue />
 
 
-  
 </template>
 
 <script>
+
 // import CreatePostVue from './components/CreatePost.vue'
-import ParentVue from './components/Parent.vue'
+// import ParentVue from './components/Parent.vue'
 // import PostListVue from './components/PostList.vue'
+// import TemplateRefVue from './components/TemplateRef.vue'
+import ClickCounterVue from './components/ClickCounter.vue'
+import HoverCounterVue from './components/HoverCounter.vue'
+
+
 
 
 
@@ -51,7 +60,10 @@ export default {
   components: {
     // PostListVue,
     // CreatePostVue,
-    ParentVue
+    // ParentVue
+    // TemplateRefVue,
+    ClickCounterVue ,
+    HoverCounterVue
     
   }
 }
